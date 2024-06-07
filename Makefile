@@ -43,7 +43,7 @@ test-chainsaw:
 .PHONY: test-chainsaw-vap
 test-chainsaw-vap:  
 	@echo Running chainsaw tests for VAPs... >&2
-	@chainsaw test --config .chainsaw-config.yaml --test-file chainsaw-test-vap
+	@chainsaw test --config .chainsaw-config.yaml --test-file chainsaw-test-vap.yaml
 
 ## Create kind cluster
 .PHONY: kind-create-cluster
