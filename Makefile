@@ -41,7 +41,7 @@ test-chainsaw:
 	@chainsaw test --config .chainsaw-config.yaml
 
 .PHONY: test-chainsaw-vap
-test-chainsaw:  
+test-chainsaw-vap:  
 	@echo Running chainsaw tests for VAPs... >&2
 	@chainsaw test --config .chainsaw-config.yaml --test-file chainsaw-test-vap
 
@@ -53,13 +53,13 @@ kind-create-cluster: $(KIND)
 
 ## Create kind cluster with alpha VAP enabled
 .PHONY: kind-create-cluster-vap-alpha
-kind-create-cluster: $(KIND) 
+kind-create-cluster-vap-alpha: $(KIND) 
 	@echo Create kind cluster... >&2
 	@$(KIND) create cluster --name $(KIND_NAME) --image $(KIND_IMAGE) --config $(KIND_VAP_ALPHA_CONFIG)
 
 ## Create kind cluster with beta VAP enabled
 .PHONY: kind-create-cluster-vap-beta
-kind-create-cluster: $(KIND) 
+kind-create-cluster-vap-beta: $(KIND) 
 	@echo Create kind cluster... >&2
 	@$(KIND) create cluster --name $(KIND_NAME) --image $(KIND_IMAGE) --config $(KIND_VAP_BETA_CONFIG)
 
@@ -79,7 +79,7 @@ kind-deploy-kyverno: $(HELM)
 
 ## Deploy Enterprise Kyverno with VAP generation enabled
 .PHONY: kind-deploy-kyverno-vap
-kind-deploy-kyverno: $(HELM) 
+kind-deploy-kyverno-vap: $(HELM) 
 	@echo Install kyverno chart... >&2
 	@$(HELM) repo add nirmata https://nirmata.github.io/kyverno-charts
 	@$(HELM) repo update
